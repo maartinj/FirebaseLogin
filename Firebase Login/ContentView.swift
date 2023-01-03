@@ -8,19 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var userInfo: UserInfo
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Group {
+            if userInfo.isUserAuthenticated == .undefined {
+                Text("Loading...")
+            } else if userInfo.isUserAuthenticated == .signedOut {
+                LoginView()
+            } else {
+               HomeView()
+            }
         }
-        .padding()
+        .onAppear {
+            self.userInfo.configureFirebaseStateDidChange()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserInfo())
     }
 }

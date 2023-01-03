@@ -11,6 +11,9 @@
 		E48BBCAE29634B7D00F78770 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCAD29634B7D00F78770 /* ContentView.swift */; };
 		E48BBCB029634B8000F78770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48BBCAF29634B8000F78770 /* Assets.xcassets */; };
 		E48BBCB329634B8000F78770 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48BBCB229634B8000F78770 /* Preview Assets.xcassets */; };
+		E48BBCBA29634C0E00F78770 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCB929634C0E00F78770 /* UserInfo.swift */; };
+		E48BBCBC2963A35F00F78770 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCBB2963A35F00F78770 /* LoginView.swift */; };
+		E48BBCBE2963A3CE00F78770 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCBD2963A3CE00F78770 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		E48BBCAD29634B7D00F78770 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E48BBCAF29634B8000F78770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E48BBCB229634B8000F78770 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E48BBCB929634C0E00F78770 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		E48BBCBB2963A35F00F78770 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E48BBCBD2963A3CE00F78770 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			children = (
 				E48BBCAB29634B7D00F78770 /* Firebase_LoginApp.swift */,
 				E48BBCAD29634B7D00F78770 /* ContentView.swift */,
+				E48BBCBB2963A35F00F78770 /* LoginView.swift */,
+				E48BBCBD2963A3CE00F78770 /* HomeView.swift */,
+				E48BBCB929634C0E00F78770 /* UserInfo.swift */,
 				E48BBCAF29634B8000F78770 /* Assets.xcassets */,
 				E48BBCB129634B8000F78770 /* Preview Content */,
 			);
@@ -138,6 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48BBCAE29634B7D00F78770 /* ContentView.swift in Sources */,
+				E48BBCBA29634C0E00F78770 /* UserInfo.swift in Sources */,
+				E48BBCBC2963A35F00F78770 /* LoginView.swift in Sources */,
+				E48BBCBE2963A3CE00F78770 /* HomeView.swift in Sources */,
 				E48BBCAC29634B7D00F78770 /* Firebase_LoginApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

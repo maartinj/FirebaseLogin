@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Firebase_LoginApp: App {
+    
+    var userInfo = UserInfo()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(userInfo)
         }
     }
 }
