@@ -14,6 +14,10 @@
 		E48BBCBA29634C0E00F78770 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCB929634C0E00F78770 /* UserInfo.swift */; };
 		E48BBCBC2963A35F00F78770 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCBB2963A35F00F78770 /* LoginView.swift */; };
 		E48BBCBE2963A3CE00F78770 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCBD2963A3CE00F78770 /* HomeView.swift */; };
+		E48BBCC22963CAA800F78770 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCC12963CAA800F78770 /* UserViewModel.swift */; };
+		E48BBCC82963CE3100F78770 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCC72963CE3100F78770 /* ForgotPasswordView.swift */; };
+		E48BBCCA2963CE4200F78770 /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCC92963CE4200F78770 /* SignInWithEmailView.swift */; };
+		E48BBCCC2963CE4D00F78770 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCCB2963CE4D00F78770 /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		E48BBCB929634C0E00F78770 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		E48BBCBB2963A35F00F78770 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E48BBCBD2963A3CE00F78770 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E48BBCC12963CAA800F78770 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		E48BBCC72963CE3100F78770 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		E48BBCC92963CE4200F78770 /* SignInWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
+		E48BBCCB2963CE4D00F78770 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +65,9 @@
 		E48BBCAA29634B7D00F78770 /* Firebase Login */ = {
 			isa = PBXGroup;
 			children = (
+				E48BBCC32963CDCE00F78770 /* Firebase */,
 				E48BBCAB29634B7D00F78770 /* Firebase_LoginApp.swift */,
 				E48BBCAD29634B7D00F78770 /* ContentView.swift */,
-				E48BBCBB2963A35F00F78770 /* LoginView.swift */,
 				E48BBCBD2963A3CE00F78770 /* HomeView.swift */,
 				E48BBCB929634C0E00F78770 /* UserInfo.swift */,
 				E48BBCAF29634B8000F78770 /* Assets.xcassets */,
@@ -74,6 +82,42 @@
 				E48BBCB229634B8000F78770 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E48BBCC32963CDCE00F78770 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				E48BBCC42963CDD300F78770 /* Views */,
+				E48BBCC52963CDD900F78770 /* Firestore */,
+				E48BBCC62963CDE000F78770 /* Auth */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		E48BBCC42963CDD300F78770 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E48BBCBB2963A35F00F78770 /* LoginView.swift */,
+				E48BBCC72963CE3100F78770 /* ForgotPasswordView.swift */,
+				E48BBCC92963CE4200F78770 /* SignInWithEmailView.swift */,
+				E48BBCCB2963CE4D00F78770 /* SignUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E48BBCC52963CDD900F78770 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		E48BBCC62963CDE000F78770 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				E48BBCC12963CAA800F78770 /* UserViewModel.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +191,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48BBCAE29634B7D00F78770 /* ContentView.swift in Sources */,
+				E48BBCC82963CE3100F78770 /* ForgotPasswordView.swift in Sources */,
+				E48BBCC22963CAA800F78770 /* UserViewModel.swift in Sources */,
+				E48BBCCA2963CE4200F78770 /* SignInWithEmailView.swift in Sources */,
 				E48BBCBA29634C0E00F78770 /* UserInfo.swift in Sources */,
 				E48BBCBC2963A35F00F78770 /* LoginView.swift in Sources */,
 				E48BBCBE2963A3CE00F78770 /* HomeView.swift in Sources */,
+				E48BBCCC2963CE4D00F78770 /* SignUpView.swift in Sources */,
 				E48BBCAC29634B7D00F78770 /* Firebase_LoginApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
