@@ -15,7 +15,12 @@ struct LoginView: View {
     @State private var action: Action?
     
     var body: some View {
-        SignInWithEmailView(showSheet: $showSheet, action: $action)
+        VStack {
+            SignInWithEmailView(showSheet: $showSheet, action: $action)
+            SignInWithAppleView()
+                .frame(width: 200, height: 50)
+            Spacer()
+        }
             .sheet(isPresented: $showSheet) { [action] in
                 if action == .signUp {
                     SignUpView()
