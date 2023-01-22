@@ -7,10 +7,14 @@
 
 import SwiftUI
 
+// Film Part 8: https://www.youtube.com/watch?v=ng22GGzg5kI&list=PLBn01m5Vbs4B79bOmI3FL_MFxjXVuDrma&index=8
+
 struct SignUpView: View {
     @EnvironmentObject var userInfo: UserInfo
     @State var user: UserViewModel = UserViewModel()
     @Environment(\.dismiss) var dismiss
+    @State private var showError = false
+    @State private var errorString = ""
     
     var body: some View {
         NavigationStack {
@@ -56,7 +60,17 @@ struct SignUpView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 VStack(spacing: 20) {
                     Button {
-                        // Signup
+                        FBAuth.createUser(withEmail: self.user.email,
+                                          name: self.user.fullname,
+                                          password: self.user.password) { (result) in
+                            switch result {
+                            case .failure(let error):
+                                self.errorString = error.localizedDescription
+                                self.showError = true
+                            case .success( _):
+                                print("Account creation successful")
+                            }
+                        }
                     } label: {
                         Text("Register")
                             .frame(width: 200)
@@ -72,6 +86,9 @@ struct SignUpView: View {
                 .padding()
             }
             .padding(.top)
+            .alert(isPresented: $showError) {
+                Alert(title: Text("Error creating account"), message: Text(self.errorString), dismissButton: .default(Text("OK")))
+            }
             .navigationBarTitle("Sign Up", displayMode: .inline)
             .navigationBarItems(trailing: Button("Dismiss") {
                 dismiss()

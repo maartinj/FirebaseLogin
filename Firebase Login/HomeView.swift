@@ -11,6 +11,8 @@ import Firebase
 struct HomeView: View {
     
     @EnvironmentObject var userInfo: UserInfo
+    @State private var showErrorLogout = false
+    @State private var errorStringLogout = ""
     
     var body: some View {
         NavigationStack {
@@ -19,7 +21,15 @@ struct HomeView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Log Out") {
-                            self.userInfo.isUserAuthenticated = .signedOut
+                            FBAuth.logout { (result) in
+                                switch result {
+                                case .failure(let error):
+                                    self.errorStringLogout = error.localizedDescription
+                                    self.showErrorLogout = true
+                                case .success( _):
+                                    print("Logged out")
+                                }
+                            }
                         }
                     }
                 }
@@ -36,6 +46,9 @@ struct HomeView: View {
                             self.userInfo.user = user
                         }
                     }
+                }
+                .alert(isPresented: $showErrorLogout) {
+                    Alert(title: Text("Error on logging out"), message: Text(self.errorStringLogout), dismissButton: .default(Text("OK")))
                 }
         }
     }
