@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Film Part 7: https://www.youtube.com/watch?v=uZMC07QPeIk&list=PLBn01m5Vbs4B79bOmI3FL_MFxjXVuDrma&index=7&ab_channel=StewartLynch
+
 struct SignInWithEmailView: View {
     @EnvironmentObject var userInfo: UserInfo
     @State var user: UserViewModel = UserViewModel()
@@ -18,7 +20,9 @@ struct SignInWithEmailView: View {
             TextField("Email Address", text: self.$user.email)
                 .textInputAutocapitalization(.none)
                 .keyboardType(.emailAddress)
+                .textFieldStyle(.roundedBorder)
             SecureField("Password", text: $user.password)
+                .textFieldStyle(.roundedBorder)
             HStack {
                 Spacer()
                 Button {
@@ -57,6 +61,7 @@ struct SignInWithEmailView: View {
 
             }
         }
+        .padding()
     }
 }
 
