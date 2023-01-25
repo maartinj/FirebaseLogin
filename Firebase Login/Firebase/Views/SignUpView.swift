@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// Film Part 8: https://www.youtube.com/watch?v=ng22GGzg5kI&list=PLBn01m5Vbs4B79bOmI3FL_MFxjXVuDrma&index=8
-
 struct SignUpView: View {
     @EnvironmentObject var userInfo: UserInfo
     @State var user: UserViewModel = UserViewModel()

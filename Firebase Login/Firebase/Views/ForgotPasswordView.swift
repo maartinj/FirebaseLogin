@@ -11,6 +11,9 @@ struct ForgotPasswordView: View {
     @State var user: UserViewModel = UserViewModel()
     @Environment(\.dismiss) var dismiss
     
+    @State private var showAlert = false
+    @State private var errorString: String?
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -18,7 +21,15 @@ struct ForgotPasswordView: View {
                     .textInputAutocapitalization(.none)
                     .keyboardType(.emailAddress)
                 Button {
-                    // Reset Password Action
+                    FBAuth.resetPassword(email: self.user.email) { (result) in
+                        switch result {
+                        case .failure(let error):
+                            self.errorString = error.localizedDescription
+                        case .success( _):
+                            break
+                        }
+                        self.showAlert = true
+                    }
                 } label: {
                     Text("Reset")
                         .frame(width: 200)
@@ -41,6 +52,13 @@ struct ForgotPasswordView: View {
                         dismiss()
                     }
                 }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Password Reset"),
+                      message: Text(self.errorString ?? "Success. Reset email sent successfully. Check your email"),
+                      dismissButton: .default(Text("OK")) {
+                    dismiss()
+                })
             }
         }
     }

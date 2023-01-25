@@ -10,6 +10,8 @@ import AuthenticationServices
 
 // Not added and not available 'Sign In With Apple' Capability from Targets option, because of free Apple Dev account
 
+// Film Part 10: https://www.youtube.com/watch?v=3PAWaMFe_X4&list=PLBn01m5Vbs4B79bOmI3FL_MFxjXVuDrma&index=10&ab_channel=StewartLynch
+
 struct SignInWithAppleView: UIViewRepresentable {
     
     @EnvironmentObject var userInfo: UserInfo
