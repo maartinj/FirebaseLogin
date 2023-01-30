@@ -112,8 +112,8 @@ struct FBAuth {
         
         
         let data = FBUser.dataDict(uid: uid,
-                                         name: name,
-                                         email: email)
+                                   name: name,
+                                   email: email)
         
         // Now create or merge the User in Firestore DB
         FBFirestore.mergeFBUser(data, uid: uid) { (result) in
@@ -125,7 +125,7 @@ struct FBAuth {
     static func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
-            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
         
@@ -179,8 +179,8 @@ struct FBAuth {
                 return
             }
             let data = FBUser.dataDict(uid: authResult!.user.uid,
-                                             name: name,
-                                             email: authResult!.user.email!)
+                                       name: name,
+                                       email: authResult!.user.email!)
             
             FBFirestore.mergeFBUser(data, uid: authResult!.user.uid) { (result) in
                 completionHandler(result)
@@ -201,4 +201,59 @@ struct FBAuth {
         }
     }
     
+    // MARK: - Delete User
+    enum ProviderType: String {
+        case password
+        case apple = "apple.com"
+    }
+    
+    static func getProviders() -> [ProviderType] {
+        var providers: [ProviderType] = []
+        if let user = Auth.auth().currentUser {
+            for data in user.providerData {
+                if let providerType = ProviderType(rawValue: data.providerID) {
+                    providers.append(providerType)
+                }
+            }
+        }
+        return providers
+    }
+    
+    static func reauthenticateWithPassword(password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let credential = EmailAuthProvider.credential(withEmail: user.email ?? "", password: password)
+            user.reauthenticate(with: credential) { _, error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+    }
+    
+    static func reauthenticateWithApple(idTokenString: String, nonce: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            user.reauthenticate(with: credential) { _, error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+    }
+    
+    static func deleteUser(completion: @escaping (Result<Bool, Error>) -> Void) {
+        if let user = Auth.auth().currentUser {
+            user.delete { error in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
+            }
+        }
+    }
 }

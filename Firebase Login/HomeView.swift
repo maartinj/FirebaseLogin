@@ -14,6 +14,11 @@ struct HomeView: View {
     @State private var showErrorLogout = false
     @State private var errorStringLogout = ""
     
+    @State private var showProfile = false
+    @State private var canDelete = false
+    @State private var deleteString = ""
+    @State private var showErrorDelete = false
+    
     var body: some View {
         NavigationStack {
             Text("Logged in as \(userInfo.user.name)")
@@ -32,6 +37,43 @@ struct HomeView: View {
                             }
                         }
                     }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            showProfile = true
+                        } label: {
+                            Image(systemName: "person.crop.circle.fill")
+                        }
+                        .frame(width: 44, height: 44)
+                    }
+                }
+                .sheet(isPresented: $showProfile, onDismiss: {
+                    if canDelete {
+                        FBFirestore.deleteUserData(uid: userInfo.user.uid) { result in
+                            switch result {
+                            case .success:
+                                FBAuth.deleteUser { result in
+                                    if case let .failure(error) = result {
+                                        // print(error.localizedDescription)
+                                        self.deleteString = error.localizedDescription
+                                        showErrorDelete = true
+                                    }
+                                    if case let .success(deleteDone) = result {
+                                        self.deleteString = "Account successfully deleted"
+                                        showErrorDelete = deleteDone
+                                    }
+                                }
+                            case .failure(let error):
+                                // print(error.localizedDescription)
+                                self.deleteString = error.localizedDescription
+                                showErrorDelete = true
+                            }
+                        }
+                    }
+                }) {
+                    ProfileView(canDelete: $canDelete)
+                }
+                .alert(isPresented: $showErrorDelete) {
+                    Alert(title: Text("Notification delete account"), message: Text(self.deleteString), dismissButton: .default(Text("OK")))
                 }
                 .onAppear {
                     guard let uid = Auth.auth().currentUser?.uid else {

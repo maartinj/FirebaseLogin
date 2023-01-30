@@ -11,6 +11,7 @@ import AuthenticationServices
 struct SignInWithAppleButtonView: View {
     
     @State private var currentNonce: String?
+    var handleResult: ((Result<Bool, Error>) -> Void)? = nil
     
     var body: some View {
         SignInWithAppleButton(.continue,
@@ -36,23 +37,29 @@ struct SignInWithAppleButtonView: View {
                         print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                         return
                     }
-                    
-                    FBAuth.signInWithApple(idTokenString: idTokenString, nonce: nonce) { (result) in
-                        switch result {
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                        case .success(let authDataResult):
-                            let signInWithAppleResult = (authDataResult, appleIDCredential)
-                            FBAuth.handle(signInWithAppleResult) { (result) in
-                                switch result {
-                                case .failure(let error):
-                                    print(error.localizedDescription)
-                                case .success( _):
-                                    print("Successful Login")
-                                
-                                }
-                            }
+                    if let handleResult = handleResult {
+                        FBAuth.reauthenticateWithApple(idTokenString: idTokenString, nonce: nonce) { result in
+                            handleResult(result)
+                        }
+                    } else {
                         
+                        FBAuth.signInWithApple(idTokenString: idTokenString, nonce: nonce) { (result) in
+                            switch result {
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            case .success(let authDataResult):
+                                let signInWithAppleResult = (authDataResult, appleIDCredential)
+                                FBAuth.handle(signInWithAppleResult) { (result) in
+                                    switch result {
+                                    case .failure(let error):
+                                        print(error.localizedDescription)
+                                    case .success( _):
+                                        print("Successful Login")
+                                        
+                                    }
+                                }
+                                
+                            }
                         }
                     }
                 default:

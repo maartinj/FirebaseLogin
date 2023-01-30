@@ -61,4 +61,18 @@ enum FBFirestore {
             completion(.success(data))
         }
     }
+    
+    static func deleteUserData(uid: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let reference = Firestore
+            .firestore()
+            .collection(FBKeys.CollectionPath.users)
+            .document(uid)
+        reference.delete { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(true))
+            }
+        }
+    }
 }

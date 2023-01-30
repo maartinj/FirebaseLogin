@@ -29,6 +29,8 @@
 		E48BBCCA2963CE4200F78770 /* SignInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCC92963CE4200F78770 /* SignInWithEmailView.swift */; };
 		E48BBCCC2963CE4D00F78770 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48BBCCB2963CE4D00F78770 /* SignUpView.swift */; };
 		E493CEAA2981E092001AD115 /* SignInWithAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493CEA92981E092001AD115 /* SignInWithAppleButtonView.swift */; };
+		E493CEAC2981EAA1001AD115 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493CEAB2981EAA1001AD115 /* ProfileView.swift */; };
+		E493CEAE2981F1C1001AD115 /* ReAuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E493CEAD2981F1C1001AD115 /* ReAuthenticateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		E48BBCC92963CE4200F78770 /* SignInWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailView.swift; sourceTree = "<group>"; };
 		E48BBCCB2963CE4D00F78770 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		E493CEA92981E092001AD115 /* SignInWithAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonView.swift; sourceTree = "<group>"; };
+		E493CEAB2981EAA1001AD115 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E493CEAD2981F1C1001AD115 /* ReAuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReAuthenticateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				E48BBCC92963CE4200F78770 /* SignInWithEmailView.swift */,
 				E48BBCCB2963CE4D00F78770 /* SignUpView.swift */,
 				E493CEA92981E092001AD115 /* SignInWithAppleButtonView.swift */,
+				E493CEAB2981EAA1001AD115 /* ProfileView.swift */,
+				E493CEAD2981F1C1001AD115 /* ReAuthenticateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,9 +241,11 @@
 				E48BBCAE29634B7D00F78770 /* ContentView.swift in Sources */,
 				E48BBCC82963CE3100F78770 /* ForgotPasswordView.swift in Sources */,
 				E4522B222976CE3700AA9050 /* FBFireStore.swift in Sources */,
+				E493CEAE2981F1C1001AD115 /* ReAuthenticateView.swift in Sources */,
 				E4522B212976CE3700AA9050 /* FBUser.swift in Sources */,
 				E48BBCC22963CAA800F78770 /* UserViewModel.swift in Sources */,
 				E48BBCCA2963CE4200F78770 /* SignInWithEmailView.swift in Sources */,
+				E493CEAC2981EAA1001AD115 /* ProfileView.swift in Sources */,
 				E48BBCBA29634C0E00F78770 /* UserInfo.swift in Sources */,
 				E48BBCBC2963A35F00F78770 /* LoginView.swift in Sources */,
 				E48BBCBE2963A3CE00F78770 /* HomeView.swift in Sources */,

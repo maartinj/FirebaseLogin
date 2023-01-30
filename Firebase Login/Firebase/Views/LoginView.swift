@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// Film Firebase Sign In with Email/Apple in SwiftUI - iOS 14 Update (4:10): https://www.youtube.com/watch?v=zzn0HkjmaLo&list=PLBn01m5Vbs4B79bOmI3FL_MFxjXVuDrma&index=11&ab_channel=StewartLynch
-
 struct LoginView: View {
     enum Action {
         case signUp, resetPW
